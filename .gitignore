@@ -12,6 +12,7 @@ src/
 ### Go
 # Go workspace file
 go.work
+vendor/
 # match any directory equal **/out/
 out/
 

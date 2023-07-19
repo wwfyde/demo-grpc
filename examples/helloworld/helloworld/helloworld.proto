@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option go_package = "github.com/grpc/examples/helloworld/helloworld";
+package helloworld;
+
+// The greeting service definition.
+// 问候服务(service)定义
+service Greeter {
+  // Send a greeting
+  // 发送一个问候
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+
+  // new method
+  // Send another greeting
+  // 新方法: 发送另一个问号
+  rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+}
+
+// The request message containing the user's name.
+// 请求消息: 包含用户名
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+// 响应消息: 包含问候内容
+message HelloReply {
+  string message = 1;
+}
