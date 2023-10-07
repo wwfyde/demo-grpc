@@ -1,0 +1,20 @@
+syntax="proto3";
+
+option go_package="./demo";
+//option go_package="github.com/wwfyde/demo-grpc/examples/demo/demo";
+
+//option go_package=".";
+package demo;
+
+//import "google/protobuf/timestamp.proto";
+
+// 接口 interface
+service Demonstrator {
+  rpc DoSomething ( DoRequest ) returns (DoReply) {}
+}
+message DoRequest {
+  string name = 1;
+}
+message DoReply {
+  string name = 1;
+}

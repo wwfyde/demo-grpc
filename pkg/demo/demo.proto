@@ -1,0 +1,18 @@
+syntax="proto3";
+package  demo;
+
+//option go_package = "./;demo";
+//option go_package = "./demo";
+option go_package = "github.com/wwfyde/demo-grpc/pkg/demo";
+
+// 接口 interface
+service Demonstrator {
+  rpc DoSomething ( DoRequest ) returns (DoReply) {}
+  rpc DoAnotherSomething ( DoRequest ) returns (DoReply) {}
+}
+message DoRequest {
+  string name = 1;
+}
+message DoReply {
+  string name = 1;
+}

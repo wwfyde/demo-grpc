@@ -1,0 +1,55 @@
+syntax="proto3";
+package routeguide;
+
+option go_package="./;routeguide";
+
+// interface
+service RouteGuide {
+  // unary
+  rpc GetFeature(Point) returns (Feature) {}
+
+  // A server-to-client streaming RPC.
+  rpc ListFeatures(Rectangle) returns (stream Feature) {}
+
+  // A client-to-server streaming RPC.
+  rpc RecordRoute(stream Point) returns (RouteSummary) {}
+
+  // A Bidirectional streaming RPC.
+  rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
+}
+
+message Point {
+  int32 latitude = 1;
+  int32 longitude = 2;
+}
+
+message Feature {
+  // The name of the feature
+  string name = 1;
+
+  // The point where the feature is detected
+  Point location = 2;
+}
+
+message Rectangle {
+  // One corner of the rectangle.
+  Point lo = 1;
+  // The other corner of the rectangle.
+  Point hi = 2;
+}
+
+message RouteSummary {
+  int32 point_count = 1;
+
+  int32 feature_count = 2;
+
+  int32 distance = 3;
+
+  // The duration of the traversal in seconds.
+  int32 elapsed_time = 4;
+}
+
+message RouteNote {
+  Point location = 1;
+  string message = 2;
+}

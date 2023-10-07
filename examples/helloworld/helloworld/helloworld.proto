@@ -6,7 +6,7 @@ package helloworld;
 // The greeting service definition.
 // 问候服务(service)定义
 service Greeter {
-  // Send a greeting
+  // SayHello Send a greeting
   // 发送一个问候
   rpc SayHello (HelloRequest) returns (HelloReply) {}
 

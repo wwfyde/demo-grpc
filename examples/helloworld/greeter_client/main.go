@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	pb "github.com/wwfyde/demo-grpc/examples/helloworld/helloworld"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -35,8 +36,10 @@ func main() {
 	// Contact the server and print out its Response.
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-
+	start := time.Now()
 	r, err := c.SayHello(ctx, &pb.HelloRequest{Name: *name})
+	latency := time.Since(start)
+	fmt.Println("total latency: ", latency)
 	if err != nil {
 		log.Fatalf("could not greet: %v", err)
 	}
